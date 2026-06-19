@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bergregee.github.io/mainweb-leyu-com-cn/sitemap.xml

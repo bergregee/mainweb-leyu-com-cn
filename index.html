@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>资料索引 · 乐鱼体育</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f6f8fa;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02), 0 12px 40px rgba(0, 0, 0, 0.03);
+      padding: 2.5rem 2rem 3rem;
+    }
+
+    /* 顶部导航 — 轻量文字式 */
+    .site-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid #e9edf0;
+      margin-bottom: 2.5rem;
+    }
+
+    .site-nav .brand {
+      font-weight: 550;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+      color: #0f172a;
+    }
+
+    .site-nav .brand span {
+      color: #3b82f6;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #475569;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.2rem 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0f172a;
+      border-bottom-color: #94a3b8;
+    }
+
+    /* hero 短介绍 */
+    .hero-note {
+      margin-bottom: 2.75rem;
+    }
+
+    .hero-note h1 {
+      font-size: 1.9rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: #0b1b33;
+    }
+
+    .hero-note .desc {
+      font-size: 1rem;
+      color: #334155;
+      max-width: 600px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-note .meta-hint {
+      font-size: 0.85rem;
+      color: #64748b;
+      background: #f1f4f7;
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+    }
+
+    /* 三个场景模块（卡片式） */
+    .scenes {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2.5rem 0 2.25rem;
+    }
+
+    .scene-card {
+      background: #fafcff;
+      border-radius: 20px;
+      padding: 1.5rem 1.75rem;
+      border: 1px solid #eef2f6;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .scene-card:hover {
+      border-color: #d0d9e3;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+    }
+
+    .scene-card .card-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 550;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #4b5563;
+      background: #e9edf2;
+      padding: 0.1rem 0.7rem;
+      border-radius: 40px;
+      margin-bottom: 0.6rem;
+    }
+
+    .scene-card h3 {
+      font-weight: 550;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #0f172a;
+    }
+
+    .scene-card p {
+      color: #334155;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .scene-card .extra-tag {
+      color: #475569;
+      font-size: 0.8rem;
+      background: #f1f4f8;
+      border-radius: 20px;
+      padding: 0.1rem 0.7rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    /* 常见说明 / FAQ 摘要 */
+    .faq-summary {
+      margin: 2rem 0 1.5rem;
+      border-top: 1px solid #e9edf0;
+      padding-top: 2rem;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.25rem;
+      font-weight: 520;
+      color: #0f172a;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      font-size: 0.98rem;
+      color: #1e293b;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #475569;
+      padding-left: 0.1rem;
+      margin-top: 0.05rem;
+    }
+
+    .faq-item .a a {
+      color: #2563eb;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 0.5px;
+      text-decoration-color: #b7c9e2;
+    }
+
+    .faq-item .a a:hover {
+      color: #1e40af;
+      text-decoration-color: #1e40af;
+    }
+
+    /* 补充信息 & 提示 */
+    .info-misc {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.8rem 0 0.75rem;
+      font-size: 0.9rem;
+      color: #334155;
+      border-left: 3px solid #b9c9db;
+    }
+
+    .info-misc strong {
+      font-weight: 540;
+      color: #0f172a;
+    }
+
+    /* 底部 */
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #6b7a8f;
+      border-top: 1px solid #edf2f6;
+      padding-top: 1.75rem;
+    }
+
+    .footer-note a {
+      color: #3b82f6;
+      text-decoration: none;
+      border-bottom: 1px dotted #b7c9e2;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #3b82f6;
+    }
+
+    /* 响应式 */
+    @media (max-width: 520px) {
+      .page {
+        padding: 1.5rem 1rem;
+      }
+
+      .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .hero-note h1 {
+        font-size: 1.6rem;
+      }
+
+      .scene-card {
+        padding: 1.2rem 1.2rem;
+      }
+
+      .faq-item .q {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #0e1217;
+        color: #e2e8f0;
+      }
+
+      .page {
+        background: #171c23;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .site-nav {
+        border-bottom-color: #2a313c;
+      }
+
+      .site-nav .brand {
+        color: #f1f5f9;
+      }
+
+      .nav-links a {
+        color: #9aaec5;
+      }
+
+      .nav-links a:hover {
+        color: #e2e8f0;
+        border-bottom-color: #5c6c7f;
+      }
+
+      .hero-note h1 {
+        color: #f1f5f9;
+      }
+
+      .hero-note .desc {
+        color: #cbd5e1;
+      }
+
+      .hero-note .meta-hint {
+        background: #242b35;
+        color: #b0c0d3;
+      }
+
+      .scene-card {
+        background: #1e252f;
+        border-color: #2f3845;
+      }
+
+      .scene-card:hover {
+        border-color: #4a5668;
+      }
+
+      .scene-card .card-label {
+        background: #2f3845;
+        color: #c1d0e0;
+      }
+
+      .scene-card h3 {
+        color: #e9edf2;
+      }
+
+      .scene-card p {
+        color: #bcc8d9;
+      }
+
+      .scene-card .extra-tag {
+        background: #2b3440;
+        color: #bcc8d9;
+      }
+
+      .faq-summary {
+        border-top-color: #2a313c;
+      }
+
+      .faq-summary h2 {
+        color: #e9edf2;
+      }
+
+      .faq-item .q {
+        color: #d4dfea;
+      }
+
+      .faq-item .a {
+        color: #9caec4;
+      }
+
+      .faq-item .a a {
+        color: #6b9aff;
+        text-decoration-color: #415a7a;
+      }
+
+      .faq-item .a a:hover {
+        color: #8db4ff;
+        text-decoration-color: #6b9aff;
+      }
+
+      .info-misc {
+        background: #1a212b;
+        border-left-color: #4a5e7a;
+        color: #c8d5e5;
+      }
+
+      .info-misc strong {
+        color: #e3eaf2;
+      }
+
+      .footer-note {
+        border-top-color: #2a313c;
+        color: #7f92aa;
+      }
+
+      .footer-note a {
+        color: #6b9aff;
+        border-bottom-color: #415a7a;
+      }
+
+      .footer-note a:hover {
+        border-bottom-color: #6b9aff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 顶部导航 -->
+    <nav class="site-nav">
+      <div class="brand">资料索引<span> · 整理</span></div>
+      <div class="nav-links">
+        <a href="#">信息条目</a>
+        <a href="#">场景纪要</a>
+        <a href="#">常见说明</a>
+      </div>
+    </nav>
+
+    <!-- 核心介绍 / hero -->
+    <div class="hero-note">
+      <h1>乐鱼体育 · 信息归档</h1>
+      <p class="desc">
+        从资料整理与信息索引的角度，围绕「<a href="https://mainweb-leyu.com.cn" style="color:#2563eb; text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness:0.5px;">乐鱼体育</a>」梳理关联内容与常见脉络。以下为三个典型模块及使用说明，内容保持轻量克制。
+      </p>
+      <span class="meta-hint">基于公开信息 · 聚合参考</span>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes">
+      <div class="scene-card">
+        <span class="card-label">场景一 · 资料查阅</span>
+        <h3>赛事档案与动态归类</h3>
+        <p>关注体育项目的赛程、队伍数据及历史记录，适合需要快速查阅比赛信息的用户。这里只搬运整理公开来源，不做主观预测。</p>
+        <span class="extra-tag">数据参考 · 无倾向</span>
+      </div>
+
+      <div class="scene-card">
+        <span class="card-label">场景二 · 信息索引</span>
+        <h3>常见关联条目</h3>
+        <p>将「<a href="https://mainweb-leyu.com.cn" style="color:#2563eb; text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness:0.5px;">乐鱼体育</a>」相关的内容按来源、类型和时效进行简单分类，便于横向比较。条目本身仅供学习与参考，不构成建议。</p>
+        <span class="extra-tag">来源梳理</span>
+      </div>
+
+      <div class="scene-card">
+        <span class="card-label">场景三 · 环境提示</span>
+        <h3>浏览与访问备忘</h3>
+        <p>建议在访问任何网站前，自行确认网络环境与设备安全。索引页仅作为信息汇总，不引导、不鼓励任何超出常规浏览的行为。</p>
+        <span class="extra-tag">通用提醒</span>
+      </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-summary">
+      <h2>常见说明 · 摘要</h2>
+
+      <div class="faq-item">
+        <div class="q">Q：这个页面是什么性质？</div>
+        <div class="a">A：仅作为信息索引与内容整理，不包含任何操作指引。可以把它看作一个轻量的资料盒，围绕 <a href="https://mainweb-leyu.com.cn">乐鱼体育</a> 做简单的模块化梳理。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q">Q：资料从哪里来？</div>
+        <div class="a">A：主要来自公开可查的体育信息与平台说明，索引内容克制在基础介绍范畴，不涉及非公开或诱导类信息。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="q">Q：页面会更新吗？</div>
+        <div class="a">A：根据信息来源的变化偶尔调整模块与条目，但不会高频改动。建议自行判断信息的时效性。</div>
+      </div>
+    </div>
+
+    <!-- 补充提示 -->
+    <div class="info-misc">
+      <strong>💡 阅读提示：</strong> 所有内容均按「资料整理」的思路编排，不含任何形式的保证或承诺。如有疑问，应以原始出处为准。本页不收集用户信息，不设置跳转追踪。
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+      基于公开信息 · 仅用于索引参考 · 关于 <a href="https://mainweb-leyu.com.cn">乐鱼体育</a> 的更多内容请自行查阅。
+    </div>
+  </div>
+</body>
+</html>
