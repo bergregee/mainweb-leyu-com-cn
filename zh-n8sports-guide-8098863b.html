@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>牛八体育 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf7f2;  /* 米白基调 */
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, system-ui, sans-serif;
+            color: #2c3e4f;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrapper {
+            max-width: 880px;
+            width: 100%;
+            background: #fffffffa;
+            border-radius: 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2.2rem;
+            backdrop-filter: blur(1px);
+            transition: padding 0.2s;
+        }
+
+        /* ---- 顶部导航 ---- */
+        .top-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e2ddd2;
+        }
+
+        .site-title {
+            font-size: 1.6rem;
+            font-weight: 550;
+            letter-spacing: 1px;
+            color: #2d4a3e;
+        }
+
+        .site-title small {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: #7a8a7d;
+            margin-left: 0.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.98rem;
+            color: #4b5f55;
+            padding: 0.2rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #7c9a87;
+            color: #1b332b;
+        }
+
+        /* ---- hero 摘要 ---- */
+        .hero-section {
+            margin: 1rem 0 2rem 0;
+        }
+
+        .hero-section h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: #2b463b;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-section .sub {
+            font-size: 1.05rem;
+            color: #4f6259;
+            background: #f2efe9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px 12px 40px 12px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.02rem;
+            margin: 1.2rem 0 1.5rem 0;
+        }
+
+        /* 引用块 / 提示框 */
+        .notice-block {
+            background: #edebe4;
+            border-left: 5px solid #6e8b7c;
+            padding: 1rem 1.5rem;
+            border-radius: 0 16px 16px 0;
+            margin: 1.6rem 0 2rem 0;
+            font-size: 0.95rem;
+            color: #2e3f37;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .notice-block strong {
+            font-weight: 600;
+            color: #1f3d30;
+        }
+
+        /* 三个场景模块 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.6rem;
+            margin: 2.2rem 0 1.5rem 0;
+        }
+
+        .scene-card {
+            background: #f8f5ef;
+            border-radius: 20px;
+            padding: 1.5rem 1rem 1.2rem 1rem;
+            transition: background 0.2s, transform 0.1s;
+            border: 1px solid #e5dfd4;
+        }
+
+        .scene-card:hover {
+            background: #f4efe6;
+            transform: translateY(-2px);
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #334d42;
+            letter-spacing: 0.3px;
+            border-bottom: 1px dashed #cdc5b6;
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .scene-card p {
+            font-size: 0.94rem;
+            color: #3e5147;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            background: #d6d9cd;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            color: #2b3e34;
+            margin-top: 0.6rem;
+        }
+
+        /* 常见说明 (FAQ 摘要) */
+        .faq-summary {
+            margin: 2.5rem 0 1.2rem 0;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #2b463b;
+            border-bottom: 1px solid #dad3c7;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            padding: 0.5rem 0.8rem;
+            background: #f7f4ed;
+            border-radius: 12px;
+        }
+
+        .faq-item .q {
+            font-weight: 520;
+            color: #1c352a;
+        }
+
+        .faq-item .a {
+            margin-top: 0.25rem;
+            padding-left: 0.6rem;
+            color: #3f554a;
+            border-left: 2px solid #b7b9aa;
+        }
+
+        /* 内嵌链接 */
+        a {
+            color: #3a6b54;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #b7cdbc;
+            transition: color 0.1s;
+        }
+        a:hover {
+            color: #1c3d2e;
+            text-decoration-color: #6d8f7a;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 2.8rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e3ddd2;
+            font-size: 0.85rem;
+            color: #6f7e74;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .page-wrapper {
+                padding: 1.8rem 1.2rem;
+            }
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .scenes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .hero-section h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 800px) {
+            .scenes-grid {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <span class="site-title">牛八体育 <small>· 信息介绍</small></span>
+        <div class="nav-links">
+            <a href="#intro">概览</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- 核心介绍 hero -->
+    <section class="hero-section" id="intro">
+        <h1>关于站点 · 可信背景</h1>
+        <div class="sub">体育资讯与知识参考平台</div>
+        <div class="intro-text">
+            <p>在信息丰富的体育领域中，<a href="https://zh-n8sports.com">牛八体育</a> 致力于整合赛事动态、训练理念与行业观察。站内内容以知识型梳理为主，帮助浏览者更系统地理解运动项目的规则演变、战术逻辑以及相关文化背景。我们不追逐瞬时热点，而是侧重长期可用的信息框架。</p>
+            <p style="margin-top: 0.8rem;">平台定位为一个轻量、克制的参考源，所有内容均经过事实核校与交叉验证，避免武断结论。从基础规则到进阶分析，逐步构建可依赖的体育知识体系。</p>
+        </div>
+    </section>
+
+    <!-- 提示框 / 引用块（可信说明） -->
+    <div class="notice-block">
+        <strong>▍ 可信说明</strong><br>
+        本站内容取自公开竞赛规则、运动医学基础手册及多项国际体育组织发布的指导文件。每篇文章均标明参考来源（或依据版本），不杜撰数据、不渲染情绪。若发现信息存疑，欢迎通过站内渠道反馈，我们会及时复核修正。
+    </div>
+
+    <!-- 三个场景模块 -->
+    <section id="scenes">
+        <h2 style="font-weight: 400; font-size: 1.4rem; margin-bottom: 0.5rem; color: #2f4c3f;">常见使用场景</h2>
+        <div class="scenes-grid">
+            <div class="scene-card">
+                <h3>🏸 规则查询</h3>
+                <p>快速查找羽毛球、乒乓球、篮球等主流运动的详细竞赛规则，包括计分方式、违例界定与裁判手势图解。</p>
+                <span class="tag">场景一</span>
+            </div>
+            <div class="scene-card">
+                <h3>📊 训练逻辑</h3>
+                <p>从周期性负荷到恢复策略，梳理业余与半专业训练中的基础原则，避免因信息碎片化导致训练偏差。</p>
+                <span class="tag">场景二</span>
+            </div>
+            <div class="scene-card">
+                <h3>🧠 赛事文化</h3>
+                <p>解读经典比赛背后的战术演变与地域风格，不限于胜负结果，更关注体育社会学层面的延展讨论。</p>
+                <span class="tag">场景三</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <section class="faq-summary" id="faq">
+        <h2>常见疑问摘要</h2>
+
+        <div class="faq-item">
+            <div class="q">❓ 网站内容更新频率如何？</div>
+            <div class="a">常规板块每月更新 2～4 篇深度文章；规则库随官方规则变动而修订，通常滞后不超过一个季度。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="q">❓ 可以参考站内资料用于教学吗？</div>
+            <div class="a">可以，但建议同时对照最新官方规则手册。本站内容可作为辅助理解材料，具体教学请以实际项目规定为准。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="q">❓ 是否有用户交流板块？</div>
+            <div class="a">当前以信息展示为主，暂未开放评论区或论坛。未来可能增设知识问答精选区域，届时会提前公告。</div>
+        </div>
+
+        <div style="margin-top: 1.2rem; background: #edeae1; padding: 0.7rem 1rem; border-radius: 20px; font-size: 0.9rem;">
+            💡 如需进一步了解站点背景，可直接访问 <a href="https://zh-n8sports.com">牛八体育</a> 首页浏览最新内容。
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>© 2025 · 知识型体育内容</span>
+        <span>基于公开信息 · 无诱导表述</span>
+    </div>
+
+</div>
+</body>
+</html>
