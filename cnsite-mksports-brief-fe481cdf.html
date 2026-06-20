@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK体育 · 运动生活聚合</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fbe9cf 0%, #f6d8b1 55%, #efc48c 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .page-wrap {
+      max-width: 1100px;
+      width: 100%;
+    }
+    /* 暖色卡片风格 */
+    .card {
+      background: #fffcf7;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px -12px rgba(120, 70, 30, 0.25), 0 6px 18px rgba(80, 45, 15, 0.08);
+      padding: 2.2rem 2.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.2s ease;
+    }
+    h1, h2, h3 {
+      font-weight: 550;
+      letter-spacing: -0.015em;
+      color: #3f2816;
+    }
+    h1 {
+      font-size: 2.6rem;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #de9b5b;
+      padding-left: 1rem;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #5a3b20;
+    }
+    p {
+      color: #3c2c1a;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      margin-bottom: 0.9rem;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+    .hero .sub {
+      font-size: 1.15rem;
+      color: #7a5d3e;
+      background: #ecdbc6;
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 0.2rem;
+      font-weight: 450;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 80%;
+    }
+    .btn-link {
+      display: inline-block;
+      background: #d88b4a;
+      color: white;
+      font-weight: 500;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 12px rgba(170, 90, 30, 0.25);
+      transition: all 0.15s;
+      margin-top: 0.5rem;
+      border: none;
+      letter-spacing: 0.01em;
+    }
+    .btn-link:hover {
+      background: #bd753a;
+      transform: scale(0.98);
+      box-shadow: 0 4px 10px rgba(140, 70, 20, 0.3);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.5rem;
+      margin: 1.2rem 0;
+    }
+    .feature-item {
+      background: #fff5ea;
+      padding: 1.2rem 1rem;
+      border-radius: 24px;
+      box-shadow: inset 0 1px 3px rgba(255, 235, 210, 0.6), 0 2px 6px rgba(100, 60, 25, 0.05);
+    }
+    .feature-item p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed #dcc5b0;
+    }
+    .faq-item strong {
+      color: #523b22;
+      display: block;
+      margin-bottom: 0.2rem;
+      font-weight: 560;
+    }
+    .faq-item p {
+      margin-bottom: 0.2rem;
+      font-size: 0.98rem;
+    }
+    .bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.8rem;
+      background: #f2e2d0;
+      border-radius: 48px;
+      padding: 1rem 2rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .bottom-links a {
+      color: #4e3119;
+      text-decoration: none;
+      font-weight: 480;
+      border-bottom: 2px solid transparent;
+      transition: 0.1s;
+      padding-bottom: 2px;
+    }
+    .bottom-links a:hover {
+      border-bottom-color: #ac7a4b;
+      color: #2d1b0b;
+    }
+    .inline-link {
+      color: #a6612c;
+      font-weight: 510;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      transition: 0.1s;
+    }
+    .inline-link:hover {
+      color: #6c411f;
+      background: #ebd9c7;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .small-note {
+      font-size: 0.85rem;
+      color: #7a6248;
+      margin-top: 0.7rem;
+      text-align: center;
+    }
+    @media (max-width: 660px) {
+      .card { padding: 1.6rem 1.2rem; }
+      h1 { font-size: 2rem; }
+      .hero p { max-width: 100%; font-size: 1.05rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .bottom-links { flex-direction: column; gap: 0.6rem; padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HERO 区 -->
+  <div class="card">
+    <div class="hero">
+      <span class="sub">🏃 运动 · 生活 · 资讯</span>
+      <h1>MK体育<br>让运动找到你</h1>
+      <p>一个聚合赛事、健身、户外与社区动态的线上空间。不论你是球场常客还是刚想动起来，都能在这里找到属于自己的节奏。</p>
+      <a href="https://cnsite--mksports.com" class="btn-link">MK体育</a>
+    </div>
+  </div>
+
+  <!-- 优势区：场景卡片 -->
+  <div class="card">
+    <h2>为什么用 MK体育</h2>
+    <div class="grid-2">
+      <div class="feature-item">
+        <h3>⚡ 快速了解玩法</h3>
+        <p>赛事日历、规则图解、入门指南一应俱全，不用四处翻资料。页面结构直接，节省翻找时间。</p>
+      </div>
+      <div class="feature-item">
+        <h3>🧭 实用信息聚合</h3>
+        <p>运动装备推荐、场地评价、本地活动汇总。内容经过筛选，帮助更聪明地决策。</p>
+      </div>
+      <div class="feature-item">
+        <h3>💬 真实社区视角</h3>
+        <p>讨论区里没有花哨营销，大多是爱好者日常吐槽、约球和心得分享。氛围轻松。</p>
+      </div>
+      <div class="feature-item">
+        <h3>📱 适配多种屏幕</h3>
+        <p>在手机、平板、电脑上阅读体验一致。不用额外缩放，内容排版清爽。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 说明区：从识别用途切入 -->
+  <div class="card">
+    <h2>这个网站是做什么的？</h2>
+    <p>很多人第一次打开 <a href="https://cnsite--mksports.com" class="inline-link">MK体育</a> 会好奇：这是卖装备的平台？还是直播网站？其实都不是。它更像一个运动生活的索引站——把零散的信息（比赛时间、训练技巧、场馆推荐、运动社交）汇集到一处，再用直观的方式呈现。你不需要注册就能浏览大部分内容，看到感兴趣的再深入了解。</p>
+    <p>页面设计偏重实用性：该有的分类、搜索、推荐都有，但不会过度复杂。如果你只是想查查周末哪里有羽毛球活动，或者想了解某场联赛的赛程，从这里开始挺顺手。</p>
+    <p style="margin-top: 0.2rem; font-style: italic; color: #6f5238;">—— 没有强制推送，没有广告刷屏，简简单单看运动。</p>
+  </div>
+
+  <!-- FAQ 摘要（三个常见问题） -->
+  <div class="card">
+    <h2>常见疑问 · 快速一览</h2>
+    <div class="faq-item">
+      <strong>需要付费才能使用吗？</strong>
+      <p>绝大部分内容免费浏览。部分深度数据或定制提醒可能涉及增值服务，但日常查赛事、看文章完全免费。</p>
+    </div>
+    <div class="faq-item">
+      <strong>内容多久更新一次？</strong>
+      <p>赛事信息实时同步，社区帖子每天都有新内容。运营团队会审核热门板块，确保信息不过期。</p>
+    </div>
+    <div class="faq-item">
+      <strong>我能在上面发布自己的运动动态吗？</strong>
+      <p>当然。注册后可以在广场分享训练记录、约人组队，或者写写装备评测。鼓励真实分享。</p>
+    </div>
+  </div>
+
+  <!-- 底部链接 + 轻提示 -->
+  <div class="bottom-links">
+    <a href="#">关于我们</a>
+    <a href="#">常见问题</a>
+    <a href="#">用户协议</a>
+    <a href="https://cnsite--mksports.com" style="font-weight: 550;">MK体育</a>
+    <a href="#">联系反馈</a>
+  </div>
+  <div class="small-note">
+    MK体育 —— 运动爱好者的信息聚合地 · 发现属于你的运动方式
+  </div>
+</div>
+</body>
+</html>
